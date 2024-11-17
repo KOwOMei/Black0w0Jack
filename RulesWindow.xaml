@@ -1,0 +1,32 @@
+﻿<Window x:Class="Black0w0Jack.RulesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Black0w0Jack"
+        mc:Ignorable="d"
+        Title="Правила Черного Джека" Height="550" Width="400"
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Background="ForestGreen">
+        <TextBlock Text="Правила BlackJack'а" FontSize="30" Foreground="Black" HorizontalAlignment="Center" Margin="15"/>
+        <Button Name="BackButton" Content="X" Width="30" Height="30" Click="BackButton_Click" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" Foreground="Red" BorderBrush="{x:Null}" FontWeight="Bold" FontSize="18"/>
+
+        <TextBlock TextWrapping="Wrap" Margin="20, 75, 20, 20" FontSize="18">
+            Цель игры в BlackJack - набрать 21 очко или приблизиться к этому значению, не превысив его. При этом ваше количество очков должно быть больше, чем у Дилера.
+            <LineBreak/>
+            <LineBreak/>
+            <Run Text="Правило 1. " FontWeight="Bold"/>
+            <Run Text="Все наминальные карты имеют ценность, указанную на них. Король, Дама и Валет имеют ценность в 10 очков."/>
+            <LineBreak/>
+            <Run Text="Правило 2. " FontWeight="Bold"/>
+            <Run Text="Туз имеет двойную ценность: если сумма всех карт в руке, включая туз, не превышает 21 очко, то ценность туза равна 11 очкам, иначе она меняет свою ценность на 1."/>
+            <LineBreak/>
+            <Run Text="Правило 3. " FontWeight="Bold"/>
+            <Run Text="Вторая карта у Дилера всегда скрыта, пока вы добираете карты в руку."/>
+            <LineBreak/>
+            <Run Text="Правило 4. " FontWeight="Bold"/>
+            <Run Text="Дилер всегда пытается набрать карт до момента, пока ценность его карт не превысит 17 очков."/>
+            <LineBreak/>
+        </TextBlock>
+    </Grid>
+</Window>

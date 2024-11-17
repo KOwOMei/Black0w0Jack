@@ -1,0 +1,18 @@
+﻿<Window x:Class="Black0w0Jack.StartMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Black0w0Jack"
+        mc:Ignorable="d"
+        Title="Черный Джек, начало" Height="350" Width="300"
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Background="ForestGreen">
+        <TextBlock Text="BlackJack (без шл*х)" FontSize="30" Foreground="Black" HorizontalAlignment="Center" Margin="15"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+            <Button Name="StartGameButton" Content="Начать игру" Width="200" Height="50" Click="StartGameButton_Click" Margin="10"/>
+            <Button Name="RulesButton" Content="Правила" Width="200" Height="50" Click="RulesButton_Click" Margin="10"/>
+            <Button Name="ExitButton" Content="Выход" Width="200" Height="50" Click="ExitButton_Click" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>

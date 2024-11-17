@@ -1,0 +1,13 @@
+# Файлы, генирирующиеся при работе в Visual Studio
+.vs/
+
+# Файл конфигурации папки
+Desktop.ini
+
+# Каталоги VS Code
+.vscode/
+.history/
+
+# Компилируемые WPF папки
+bin/
+obj/

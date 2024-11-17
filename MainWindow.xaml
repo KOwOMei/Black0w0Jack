@@ -1,0 +1,65 @@
+﻿<Window x:Class="Black0w0Jack.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Black0w0Jack"
+        mc:Ignorable="d"
+        Title="ЧерныйДжек" Width="1920" Height="1080"
+        WindowState="Maximized" ResizeMode="NoResize" WindowStyle="None">
+    
+    <Grid Background="Green">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+                
+        <!-- Дилер -->
+        <TextBlock Grid.Row="0" Grid.Column="0" Name="DealerScore"  Text="Счет: 0" FontSize="36" Foreground="Black" HorizontalAlignment="Center" Margin="10" Background="White"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Дилер" FontSize="36" Foreground="Black" HorizontalAlignment="Center" Margin="10"/>
+        <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Name="DealerCardsPanel" HorizontalAlignment="Center" Margin="10">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Image.Source}" Width="125" Height="182"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        <!-- Игрок -->
+        <TextBlock Grid.Row="2" Grid.Column="0" Name="PlayerScore"  Text="Счет: 0" FontSize="36" Foreground="Black" HorizontalAlignment="Center" Margin="10" Background="White"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Игрок" FontSize="36" Foreground="Black" HorizontalAlignment="Center" Margin="10"/>
+        <ItemsControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Name="PlayerCardsPanel" HorizontalAlignment="Center" Margin="10">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Image.Source}" Width="125" Height="182"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Name="HitButton" Content="Взять карту" Width="125" Height="50" Margin="5" Click="TakeButton_Click" FontWeight="Bold" FontSize="18"/>
+            <Button Name="StandButton" Content="Закончить ход" Width="125" Height="50" Margin="5" Click="StopTakeButton_Click" FontWeight="Bold" FontSize="16"/>
+        </StackPanel>
+    </Grid>
+</Window>
