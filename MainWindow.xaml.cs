@@ -214,8 +214,14 @@ namespace Black0w0Jack
 
             if (playerScore > 21)
             {
-                MessageBox.Show("Игрок проиграл! Сумма очков больше 21.");
+                MessageBox.Show("Игрок проиграл! Ценность карт больше 21 очка.");
                 dealerScore++;
+                RestartGame();
+            }
+            else if (playerScore == 21)
+            {
+                MessageBox.Show("Игрок выиграл! Ценность карт равна 21 очку.");
+                playerScore++;
                 RestartGame();
             }
         }
