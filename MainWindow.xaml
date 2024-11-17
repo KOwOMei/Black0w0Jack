@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ЧерныйДжек" Width="1920" Height="1080"
         WindowState="Maximized" ResizeMode="NoResize" WindowStyle="None">
-    
+
     <Grid Background="Green">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,17 +16,17 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-                
+
         <!-- Дилер -->
-        <TextBlock Grid.Row="0" Grid.Column="0" Name="DealerScore"  Text="Счет: 0" FontSize="36" Foreground="Black" HorizontalAlignment="Center" Margin="10" Background="White"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="Дилер" FontSize="36" Foreground="Black" HorizontalAlignment="Center" Margin="10"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Name="DealerScore"  Text="Счет: 0" FontSize="60" HorizontalAlignment="Center" Margin="10" Foreground="White" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Дилер" FontSize="60" Foreground="White" HorizontalAlignment="Center" Margin="10" FontWeight="Bold"/>
         <ItemsControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Name="DealerCardsPanel" HorizontalAlignment="Center" Margin="10">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -39,10 +39,10 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
+
         <!-- Игрок -->
-        <TextBlock Grid.Row="2" Grid.Column="0" Name="PlayerScore"  Text="Счет: 0" FontSize="36" Foreground="Black" HorizontalAlignment="Center" Margin="10" Background="White"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="Игрок" FontSize="36" Foreground="Black" HorizontalAlignment="Center" Margin="10"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Name="PlayerScore"  Text="Счет: 0" FontSize="60" HorizontalAlignment="Center" Margin="10" Foreground="White" FontWeight="Bold"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Игрок" FontSize="60" Foreground="White" HorizontalAlignment="Center" Margin="10" FontWeight="Bold"/>
         <ItemsControl Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Name="PlayerCardsPanel" HorizontalAlignment="Center" Margin="10">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -57,9 +57,11 @@
         </ItemsControl>
 
         <!-- Кнопки -->
+        <Button Name="ExitButton" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Выход" Click="ExitButton_Click"  Margin="10" FontSize="48" BorderBrush="{x:Null}" Background="#FF723416" Foreground="White" Width="175" Height="65"/>
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Name="HitButton" Content="Взять карту" Width="125" Height="50" Margin="5" Click="TakeButton_Click" FontWeight="Bold" FontSize="18"/>
-            <Button Name="StandButton" Content="Закончить ход" Width="125" Height="50" Margin="5" Click="StopTakeButton_Click" FontWeight="Bold" FontSize="16"/>
+            <Button Name="HitButton" Content="Взять карту" Height="60" Margin="5" Click="TakeButton_Click" FontWeight="Bold" FontSize="30" Foreground="White" BorderBrush="{x:Null}" Background="#FF723416" Width="180"/>
+            <Button Name="StandButton" Content="Закончить ход" Height="60" Margin="5" Click="StopTakeButton_Click" FontWeight="Bold" FontSize="30" Background="#FF723416" BorderBrush="{x:Null}" Foreground="White" Width="225"/>
+            <Button Name="Restart" Content="Перезапуск" Height="60" Margin="5" Click="RestartButton_Click" FontWeight="Bold" FontSize="30" Background="Red" BorderBrush="{x:Null}" Foreground="White" Width="180"/>
         </StackPanel>
     </Grid>
 </Window>

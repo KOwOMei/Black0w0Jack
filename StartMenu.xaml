@@ -8,11 +8,11 @@
         Title="Черный Джек, начало" Height="350" Width="300"
         WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="ForestGreen">
-        <TextBlock Text="BlackJack (без шл*х)" FontSize="30" Foreground="Black" HorizontalAlignment="Center" Margin="15"/>
+        <TextBlock Text="BlackJack (без шл*х)" FontSize="30" Foreground="White" HorizontalAlignment="Center" Margin="15" VerticalAlignment="Top"/>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
-            <Button Name="StartGameButton" Content="Начать игру" Width="200" Height="50" Click="StartGameButton_Click" Margin="10"/>
-            <Button Name="RulesButton" Content="Правила" Width="200" Height="50" Click="RulesButton_Click" Margin="10"/>
-            <Button Name="ExitButton" Content="Выход" Width="200" Height="50" Click="ExitButton_Click" Margin="10"/>
+            <Button Name="StartGameButton" Content="Начать игру" Width="200" Height="50" Click="StartGameButton_Click" Margin="10" FontWeight="Bold" BorderBrush="{x:Null}" Background="#FF723416" Foreground="White" FontSize="24"/>
+            <Button Name="RulesButton" Content="Правила" Width="200" Height="50" Click="RulesButton_Click" Margin="10" Background="#FF723416" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" FontSize="24"/>
+            <Button Name="ExitButton" Content="Выход" Width="200" Height="50" Click="ExitButton_Click" Margin="10" FontSize="24" Foreground="White" BorderBrush="{x:Null}" Background="#FF723416" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Window>

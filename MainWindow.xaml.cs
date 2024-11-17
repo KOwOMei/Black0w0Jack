@@ -138,11 +138,12 @@ namespace Black0w0Jack
             DealerScore.Text = "Счет: " + CalculatePoints(dealerCards);
 
             CheckForBlackJack(playerCards, int.Parse(CalculatePoints(playerCards)));
-            CheckForBlackJack(dealerCards, int.Parse(CalculatePoints(dealerCards)));
         }
 
         private void RestartGame()
         {
+            MessageBox.Show($"Счет: Дилер - {dealerScore}, Игрок - {playerScore}");
+            
             playerCards.Clear();
             dealerCards.Clear();
             StartGame();
@@ -155,7 +156,9 @@ namespace Black0w0Jack
                 if (card.IsAce && points == 21)
                 {
                     MessageBox.Show("BlackJack! Поздравляю! Вы выиграли!");
+                    playerScore++;
                     RestartGame();
+                    break;
                 }
             }
         }
@@ -212,6 +215,7 @@ namespace Black0w0Jack
             if (playerScore > 21)
             {
                 MessageBox.Show("Игрок проиграл! Сумма очков больше 21.");
+                dealerScore++;
                 RestartGame();
             }
         }
@@ -252,7 +256,19 @@ namespace Black0w0Jack
                 MessageBox.Show("Игрок выиграл! Ценность его карт выше, чем у Дилера.");
                 playerScore++;
             }
-            MessageBox.Show($"Счет: Дилер - {dealerScore}, Игрок - {playerScore}");
+            RestartGame();
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void RestartButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"Игра перезапущена, колода пересобрана, победный счёт обнулен.");
+            playerScore = 0;
+            dealerScore = 0;
             RestartGame();
         }
     }
