@@ -26,7 +26,8 @@ namespace Black0w0Jack
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            bool GameMode = WithDealerDraw.IsChecked == true;
+            MainWindow mainWindow = new MainWindow(GameMode);
             mainWindow.Show();
             this.Close();
         }

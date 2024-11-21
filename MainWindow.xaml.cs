@@ -108,8 +108,11 @@ namespace Black0w0Jack
 
         public int playerScore;
         public int dealerScore;
+        private bool GameMode;
 
-        public MainWindow()
+        private Random random = new Random();
+
+        public MainWindow(bool gameMode)
         {
             InitializeComponent();
             playerCards = new ObservableCollection<Card>();
@@ -120,6 +123,7 @@ namespace Black0w0Jack
 
             PlayerCardsPanel.ItemsSource = playerCards;
             DealerCardsPanel.ItemsSource = dealerCards;
+            GameMode = gameMode;
             StartGame();
 
         }
@@ -137,7 +141,7 @@ namespace Black0w0Jack
             PlayerScore.Text = "Счет: " + CalculatePoints(playerCards);
             DealerScore.Text = "Счет: " + CalculatePoints(dealerCards);
 
-            CheckForBlackJack(playerCards, int.Parse(CalculatePoints(playerCards)));
+            CheckForBlackJack(playerCards);
         }
 
         private void RestartGame()
@@ -149,16 +153,22 @@ namespace Black0w0Jack
             StartGame();
         }
 
-        private void CheckForBlackJack(ObservableCollection<Card> cards, int points)
+        private void CheckForBlackJack(ObservableCollection<Card> сards)
         {
-            foreach (var card in cards)
+            int playerPoints = int.Parse(CalculatePoints(сards));
+
+            if (сards.Count == 2)
             {
-                if (card.IsAce && points == 21)
+               foreach (var card in сards)
                 {
-                    MessageBox.Show("BlackJack! Поздравляю! Вы выиграли!");
-                    playerScore++;
-                    RestartGame();
-                    break;
+                    if (card.IsAce && playerPoints == 21)
+                    {
+                        UnhideHiddenCard(dealerCards);
+                        MessageBox.Show("BlackJack! Поздравляю! Вы выиграли!");
+                        playerScore++;
+                        RestartGame();
+                        break;
+                    }
                 }
             }
         }
@@ -214,34 +224,74 @@ namespace Black0w0Jack
 
             if (playerScore > 21)
             {
+                UnhideHiddenCard(dealerCards);
                 MessageBox.Show("Игрок проиграл! Ценность карт больше 21 очка.");
                 dealerScore++;
                 RestartGame();
             }
-            else if (playerScore == 21)
+        }
+
+        private void UnhideHiddenCard(ObservableCollection<Card> cards)
+        {
+            foreach (var card in cards)
             {
-                MessageBox.Show("Игрок выиграл! Ценность карт равна 21 очку.");
-                playerScore++;
-                RestartGame();
+                if (card.IsHidden)
+                {
+                    card.IsHidden = false;
+                    card.Image.Source = card.HiddenImage;
+                }
             }
+            DealerScore.Text = "Счет: " + CalculatePoints(dealerCards);
+        }
+
+        private bool DealerAnalys(ObservableCollection<Card> dealerCards, ObservableCollection<Card> playerCards, int dealerPoints, int playerPoints)
+        {
+            if (dealerPoints <= 17) return true;
+            else if (dealerPoints > 17 && dealerPoints > playerPoints) return false;
+
+            foreach (var card in dealerCards)
+            {
+                if ((card.IsAce && dealerPoints < 21 && dealerPoints < playerPoints)) return true;
+            }
+
+            if (dealerCards.Count + playerCards.Count > 6) return true;
+            else return false;
+        }
+
+        private int DealerTakeCard()
+        {
+            dealerCards.Add(deck.DrawCard());
+            DealerScore.Text = "Счет: " + CalculatePoints(dealerCards);
+            return int.Parse(CalculatePoints(dealerCards));
         }
 
         private void StopTakeButton_Click(object sender, RoutedEventArgs e)
         {
-            dealerCards[1].IsHidden = false;
-            dealerCards[1].Image.Source = dealerCards[1].HiddenImage;     
-
+            UnhideHiddenCard(dealerCards);
             int playerPoints = int.Parse(CalculatePoints(playerCards));
             int dealerPoints = int.Parse(CalculatePoints(dealerCards));
-            
-            DealerScore.Text = "Счет: " + dealerPoints.ToString();
 
-            while (dealerPoints < 17 || (dealerPoints < playerPoints && dealerPoints < 21))
+            if (GameMode)
             {
-                dealerCards.Add(deck.DrawCard());
-                dealerPoints = int.Parse(CalculatePoints(dealerCards));
-                DealerScore.Text = "Счет: " + dealerPoints.ToString();
+                while (DealerAnalys(dealerCards, playerCards, dealerPoints, playerPoints))
+                {
+                    dealerPoints = DealerTakeCard();
+                }
+
+                if (dealerPoints < playerPoints && random.Next(0, 2) == 1)
+                {
+                    dealerPoints = DealerTakeCard();
+                }
             }
+            else
+            {
+
+                while (dealerPoints < 17)
+                {
+                    dealerPoints = DealerTakeCard();
+                }
+            }
+
 
             if (dealerPoints > 21)
             {
